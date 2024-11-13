@@ -3,9 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Flask Application" />
     <title>Flask App - {% block title %}Default Title{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <header>
+      <h1>Flask App</h1>
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav role="navigation">
+      <ul>
+        <li><a href="{{ url_for('core.index') }}">Home</a></li>
+        <li><a href="{{ url_for('core.index') }}">About</a></li>
+        <li><a href="{{ url_for('core.index') }}">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <div class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
