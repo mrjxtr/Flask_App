@@ -1,3 +1,6 @@
+# THIS IS JUST AN EXAMPLE DOCKERFILE
+# I WOULD NOT RECOMMEND TO USE THIS
+
 # Use Python 3.11-slim as base image (3.13 is not yet available in official images)
 FROM python:3.11-slim
 

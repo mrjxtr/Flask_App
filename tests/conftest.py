@@ -1,6 +1,7 @@
 import pytest
-from flaskapp.app import create_app
-from flaskapp.app import db
+
+from flaskapp.app import create_app, db
+
 
 @pytest.fixture
 def app():
